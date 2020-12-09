@@ -4,34 +4,63 @@
 #include <math.h>
 #include <string.h>	
 
+typedef struct vars{//estrutura de uma variável
+	int nodetype;
+	char name[50];
+	double valor;
+	char valors[1000];
+	double *vet;
+	struct vars *prox;
+}VARI;
 	
-	typedef struct vars{//estrutura de uma variável
-		char name[50];
-		double valor;
-		char valors[50];
-		struct vars * prox;
-	}VARI;
-	
-	//insere uma nova variável na lista de variáveis
-	VARI *ins(VARI*l,char n[]){
-		VARI*new =(VARI*)malloc(sizeof(VARI));
-		strcpy(new->name,n);
-		new->prox = l;
-		return new;
+//insere uma nova variável na lista de variáveis
+// VARI *ins(VARI*l,char n[]){
+// 	VARI*new =(VARI*)malloc(sizeof(VARI));
+// 	strcpy(new->name,n);
+// 	new->prox = l;
+// 	return new;
+// }
+
+// 0 -> inteiro
+// 1 -> real
+// 2 -> texto
+
+// inserir nova variável na lista de variáveis
+VARI *ins_f(VARI *l, char n[]) { // real
+    VARI *neww = (VARI *)malloc(sizeof(VARI));
+    strcpy(neww->name, n);
+    neww->prox = l;
+    neww->nodetype = 1;
+    return neww;
+}
+
+VARI *ins_i(VARI *l, char n[]) { // inteiro
+    VARI *new = (VARI *)malloc(sizeof(VARI));
+    strcpy(new->name, n);
+    new->prox = l;
+    new->nodetype = 0;
+    return new;
+}
+
+VARI *ins_s(VARI *l, char n[]) { // String
+    VARI *new = (VARI *)malloc(sizeof(VARI));
+    strcpy(new->name, n);
+    new->prox = l;
+    new->nodetype = 2;
+    return new;
+}
+
+//busca uma variável na lista de variáveis
+VARI *srch(VARI*l,char n[]){
+	VARI*aux = l;
+	while(aux != NULL){
+		if(strcmp(n,aux->name)==0)
+			return aux;
+		aux = aux->prox;
 	}
+	return aux;
+}
 	
-	//busca uma variável na lista de variáveis
-	VARI *srch(VARI*l,char n[]){
-		VARI*aux = l;
-		while(aux != NULL){
-			if(strcmp(n,aux->name)==0)
-				return aux;
-			aux = aux->prox;
-		}
-		return aux;
-	}
-	
-		
 /*O node type serve para indicar o tipo de nó que está na árvore. Isso serve para a função eval() entender o que realizar naquele nó*/
 typedef struct ast { /*Estrutura de um nó*/
 	int nodetype;
@@ -281,17 +310,19 @@ double eval(Ast *a) { /*Função que executa operações a partir de um nó*/
 					printf ("%s\n",v2); break;  /*Função que imprime um valor (string)*/
 					printf ("imprimiu\n");
 					break;
-					
-		case 'V': 	l1 = ins(l1,((Varval*)a)->var);
+
+		// Inserir Variável			
+		case 'V': 	l1 = ins_f(l1,((Varval*)a)->var);
 					break;
-			
+		case 'U': 	l1 = ins_i(l1, ((Varval*)a)->var);
+					break;
+		
 		default: printf("internal error: bad node %c\n", a->nodetype);
 				break;
 				
 	}
 	return v;
 }
-
 
 int yylex();
 void yyerror (char *s){
@@ -313,7 +344,7 @@ void yyerror (char *s){
 %token <str>LETRA
 %token INICIO FIM
 %token IF ELSE WHILE 
-%token REAL 
+%token REAL INTEIRO
 %token LEIAR LEIAI
 %token ESCREVAI ESCREVAR
 %token <fn> CMP
@@ -345,6 +376,7 @@ stmt: IF '(' exp ')' '{' list '}' %prec IFX {$$ = newflow('I', $3, $6, NULL);}
 	| VARS '=' exp {$$ = newasgn($1,$3);}
 	
 	| REAL VARS	{ $$ = newvari('V',$2);}
+	| INTEIRO VARS	{ $$ = newvari('U',$2);}
 
 	| ESCREVAR '(' exp ')' { $$ = newast('P',$3,NULL);}
 	| ESCREVAI '(' exp1 ')' {$$ = newast('Y',$3,NULL);}

@@ -1,16 +1,19 @@
 inicio
 	
-	@@ teste
+	@@ real
 	real num1
-	real num2
-
-	@@ teste
-
 	leiai(num1)
 	escrevai(num1)
 	
+	@@ real
+	real num2
 	leiar(num2)
 	escrevar(num2)
-	
+
+	@@ inteiro
+	inteiro num3
+	leiai(num3)
+	escrevai(num3)
+
 fim
 

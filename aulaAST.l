@@ -24,6 +24,7 @@ TEXTO "texto"
 LETRA [a-zA-Z]
 
 COMENTARIO "@@".*	
+ATRIBUICAO "<<"
 %%
 {INICIO} {return INICIO;}
 {FIM} {return FIM;}
@@ -40,6 +41,7 @@ COMENTARIO "@@".*
 {LEIAI} {return LEIAI;}
 
 {REAL} {return REAL;}
+{INTEIRO} {return INTEIRO;}
 
 {VARS} {
 	strcpy(yylval.str,yytext);
