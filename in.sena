@@ -1,0 +1,16 @@
+inicio
+	
+	@@ teste
+	real num1
+	real num2
+
+	@@ teste
+
+	leiai(num1)
+	escrevai(num1)
+	
+	leiar(num2)
+	escrevar(num2)
+	
+fim
+
