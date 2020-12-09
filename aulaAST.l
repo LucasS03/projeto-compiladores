@@ -14,8 +14,10 @@ WHILE "WHILE"
 
 ESCREVAR "escrevar"
 ESCREVAI "escrevai"
+ESCREVAT "escrevat"
 LEIAR "leiar"
 LEIAI "leiai"
+LEIAT "leiat"
 
 REAL "real"
 INTEIRO "inteiro"
@@ -30,6 +32,7 @@ ATRIBUICAO "<<"
 {FIM} {return FIM;}
 
 {COMENTARIO} { /* ignore */ }
+{ATRIBUICAO} {return ATRIBUICAO;}
 
 {IF} {return IF;}
 {ELSE} {return ELSE;}
@@ -37,11 +40,14 @@ ATRIBUICAO "<<"
 
 {ESCREVAI} {return ESCREVAI;}
 {ESCREVAR} {return ESCREVAR;}
+{ESCREVAT} {return ESCREVAT;}
 {LEIAR} {return LEIAR;}
 {LEIAI} {return LEIAI;}
+{LEIAT} {return LEIAT;}
 
 {REAL} {return REAL;}
 {INTEIRO} {return INTEIRO;}
+{TEXTO} {return TEXTO;}
 
 {VARS} {
 	strcpy(yylval.str,yytext);

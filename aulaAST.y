@@ -292,20 +292,31 @@ double eval(Ast *a) { /*Função que executa operações a partir de um nó*/
 			
 		case 'L': eval(a->l); v = eval(a->r); break; /*Lista de operções em um bloco IF/ELSE/WHILE. Assim o analisador não se perde entre os blocos*/
 		
-		case 'P': 	v = eval(a->l);		/*Recupera um valor*/
-					printf ("%.2f\n",v); break;  /*Função que imprime um valor*/
-		
+		// Ler variável
+		case 'T':
+					scanf("%s",v1);
+					aux1 = srch(l1,((Varval *)a)->var);
+					strcpy(aux1->valors,v1);
+					break;
 		case 'S': 	scanf("%lf",&v);
 					aux1 = srch(l1,((Varval *)a)->var);
 					aux1->valor = v;
 					break;
-		
-		case 'T': 	scanf("%s",v1);
+		case 'A':
+					scanf("%s", v1);
 					aux1 = srch(l1,((Varval *)a)->var);
 					strcpy(aux1->valors,v1);
-					break;			
-		
+					break;
+
+		// Printa a variável
+		case 'P': 	v = eval(a->l);		/*Recupera um valor*/
+					printf ("%.2f\n",v); break;  /*Função que imprime um valor*/
 		case 'Y':	
+					v2 = eval2(a->l);		/*Recupera um valor STR*/
+					printf ("%s\n",v2); break;  /*Função que imprime um valor (string)*/
+					printf ("imprimiu\n");
+					break;
+		case 'C':	
 					v2 = eval2(a->l);		/*Recupera um valor STR*/
 					printf ("%s\n",v2); break;  /*Função que imprime um valor (string)*/
 					printf ("imprimiu\n");
@@ -315,6 +326,8 @@ double eval(Ast *a) { /*Função que executa operações a partir de um nó*/
 		case 'V': 	l1 = ins_f(l1,((Varval*)a)->var);
 					break;
 		case 'U': 	l1 = ins_i(l1, ((Varval*)a)->var);
+					break;
+		case 'X': 	l1 = ins_s(l1, ((Varval*)a)->var);
 					break;
 		
 		default: printf("internal error: bad node %c\n", a->nodetype);
@@ -342,11 +355,11 @@ void yyerror (char *s){
 %token <flo>NUM
 %token <str>VARS
 %token <str>LETRA
-%token INICIO FIM
+%token INICIO FIM ATRIBUICAO
 %token IF ELSE WHILE 
-%token REAL INTEIRO
-%token LEIAR LEIAI
-%token ESCREVAI ESCREVAR
+%token REAL INTEIRO TEXTO
+%token LEIAR LEIAI LEIAT
+%token ESCREVAI ESCREVAR ESCREVAT
 %token <fn> CMP
 
 %right '='
@@ -377,12 +390,15 @@ stmt: IF '(' exp ')' '{' list '}' %prec IFX {$$ = newflow('I', $3, $6, NULL);}
 	
 	| REAL VARS	{ $$ = newvari('V',$2);}
 	| INTEIRO VARS	{ $$ = newvari('U',$2);}
+	| TEXTO VARS	{ $$ = newvari('X',$2);}
 
 	| ESCREVAR '(' exp ')' { $$ = newast('P',$3,NULL);}
 	| ESCREVAI '(' exp1 ')' {$$ = newast('Y',$3,NULL);}
+	| ESCREVAT '(' exp1 ')' {$$ = newast('C',$3,NULL);}
 	
 	| LEIAR '('VARS')'	{ $$ = newvari('S',$3);}
 	| LEIAI '('VARS')'	{$$ = newvari('T',$3);}
+	| LEIAT '('VARS')'	{$$ = newvari('A',$3);}
 	;
 
 list:	  stmt{$$ = $1;}

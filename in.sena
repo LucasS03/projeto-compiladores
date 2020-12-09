@@ -15,5 +15,10 @@ inicio
 	leiai(num3)
 	escrevai(num3)
 
+	@@ texto
+	texto nome
+	leiat(nome)
+	escrevat(nome)
+
 fim
 
