@@ -24,7 +24,7 @@ INTEIRO "inteiro"
 TEXTO "texto"
 
 STRING ["][^"]*["]
-SQRT "sqrt"
+SQRT "raiz"
 
 COMENTARIO "@@".*	
 ATRIBUICAO "<<"

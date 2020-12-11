@@ -3,4 +3,5 @@ all : aulaAST.l aulaAST.y
 	flex -i aulaAST.l
 	bison aulaAST.y
 	gcc aulaAST.tab.c -o analisador -lfl -lm
+	clear
 	./analisador
