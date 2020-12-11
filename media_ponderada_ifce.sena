@@ -1,0 +1,22 @@
+inicio
+
+  @@ código em sena do cálculo da média ponderada do IFCE
+
+  real n1
+  real n2
+  
+  escrevat("Média Ponderada - IFCE")
+  escrevat("")
+
+  escrevat("Digite a nota da N1")
+  leiar(n1)
+
+  escrevat("Digite a nota da N2")
+  leiar(n2)
+
+  real media << ((n1 * 2) + (n2 * 3)) / 5
+
+  escrevat("A média final é: ")
+  escrevar(media)
+
+fim

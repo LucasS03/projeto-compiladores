@@ -1,0 +1,33 @@
+inicio
+
+  @@ codigo em sena do cálculo de juros simples
+
+  real valor
+  real porcentagem
+
+  escrevat("Cálculo de Juros Simples")
+  escrevat("")
+
+  escrevat("Digite o valor (em R$)")
+  leiar(valor)
+
+  escrevat("Digite a porcentagem (em %)")
+  leiar(porcentagem)
+
+  real valorJuros << (porcentagem * 100) / valor
+  real valorMaisJuros << valorJuros + valor
+  real valorMenosJuros << valor - valorJuros
+
+  escrevat("")
+  escrevat("Valor do Juros:")
+  escrevar(valorJuros)
+
+  escrevat("")
+  escrevat("Valor + Juros:")
+  escrevar(valorMaisJuros)
+
+  escrevat("")
+  escrevat("Valor - Juros:")
+  escrevar(valorMenosJuros)
+
+fim

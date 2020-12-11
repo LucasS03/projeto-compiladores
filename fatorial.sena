@@ -1,0 +1,29 @@
+inicio
+
+  @@ codigo em sena de fatorial
+
+  escrevat("Cálculo de fatorial")
+  escrevat("") @@ pular linha
+
+  inteiro a
+  inteiro res << 1
+
+  escrevat("Digite o valor")
+  leiai(a)
+
+ 	se( a <= 1 ) {
+    res << 1
+	} senao {
+    inteiro i << 2
+
+		enquanto(i <= a) {
+			res << res * i
+      i << i + 1
+    }
+  }
+
+  escrevat("")
+  escrevat("O resultado do fatorial é:")
+	escrevai(res)
+
+fim

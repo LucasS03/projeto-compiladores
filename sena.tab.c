@@ -1673,7 +1673,13 @@ yyreturn:
 
 int main(){
 
-	yyin=fopen("in.sena","r");
+	yyin = fopen("fibonacci.sena", "r");
+	// yyin = fopen("fatorial.sena", "r");
+	// yyin = fopen("juros.sena", "r");
+	// yyin = fopen("media_ponderada_ifce.sena", "r");
+	// yyin = fopen("area_retangulo.sena", "r");
+	// yyin = fopen("in.sena", "r");
+
 	yyparse();
 	yylex();
 	fclose(yyin);

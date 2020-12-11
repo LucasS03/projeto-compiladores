@@ -172,6 +172,7 @@ Ast *newflow(int nodetype, Ast *cond, Ast *tl, Ast *el) {
 // Função que cria um nó para testes
 Ast *newcmp(int cmptype, Ast *l, Ast *r) {
   Ast *a = (Ast *)malloc(sizeof(Ast));
+  
   if(!a) {
       printf("out of space");
       exit(0);

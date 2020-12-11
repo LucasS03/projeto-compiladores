@@ -1,0 +1,23 @@
+inicio
+
+  @@ código em sena da área do retângulo
+
+  real b
+  real h
+  real area
+
+  escrevat("Cálculo da área do retângulo")
+  escrevat("") @@ pular linha
+
+  escrevat("Digite a base: ")
+  leiar(b)
+
+  escrevat("Digite a altura: ")
+  leiar(h)
+
+  escrevat("")
+  escrevat("A área do retângulo é: ")
+  area << h * b
+  escrevar(area)
+
+fim

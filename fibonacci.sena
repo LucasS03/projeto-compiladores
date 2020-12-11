@@ -1,0 +1,21 @@
+inicio
+
+  inteiro x
+	leiai(x)
+	
+  inteiro i << 0
+	inteiro a << 0
+  inteiro b << 1
+  inteiro aux
+	
+  escrevat("Sequência de Fibonnaci:")
+	enquanto(i < x) {
+		escrevai(a)
+		aux << a
+		a << b
+		b << b + aux
+    
+    i << i + 1
+	}
+
+fim

@@ -8,9 +8,9 @@ VARS [a-z]+[0-9]*
 INICIO "inicio"
 FIM "fim"
 
-IF "IF"
-ELSE "ELSE"
-WHILE "WHILE"
+IF "se"
+ELSE "senao"
+WHILE "enquanto"
 
 ESCREVAR "escrevar"
 ESCREVAI "escrevai"
