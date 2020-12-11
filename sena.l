@@ -8,13 +8,14 @@ VARS [a-z]+[0-9]*
 INICIO "inicio"
 FIM "fim"
 
-IF "se"
-ELSE "senao"
-WHILE "enquanto"
+SE "se"
+SENAO "senao"
+ENQUANTO "enquanto"
 
 ESCREVAR "escrevar"
 ESCREVAI "escrevai"
 ESCREVAT "escrevat"
+
 LEIAR "leiar"
 LEIAI "leiai"
 LEIAT "leiat"
@@ -35,9 +36,9 @@ ATRIBUICAO "<<"
 {COMENTARIO} { /* ignore */ }
 {ATRIBUICAO} {return ATRIBUICAO;}
 
-{IF} {return IF;}
-{ELSE} {return ELSE;}
-{WHILE} {return WHILE;}
+{SE} {return SE;}
+{SENAO} {return SENAO;}
+{ENQUANTO} {return ENQUANTO;}
 
 {SQRT} { return SQRT; }
 

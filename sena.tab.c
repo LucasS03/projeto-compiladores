@@ -128,9 +128,9 @@ extern int yydebug;
     STRING = 260,                  /* STRING  */
     INICIO = 261,                  /* INICIO  */
     FIM = 262,                     /* FIM  */
-    IF = 263,                      /* IF  */
-    ELSE = 264,                    /* ELSE  */
-    WHILE = 265,                   /* WHILE  */
+    SE = 263,                      /* SE  */
+    SENAO = 264,                   /* SENAO  */
+    ENQUANTO = 265,                /* ENQUANTO  */
     TEXTO = 266,                   /* TEXTO  */
     INTEIRO = 267,                 /* INTEIRO  */
     REAL = 268,                    /* REAL  */
@@ -192,9 +192,9 @@ enum yysymbol_kind_t
   YYSYMBOL_STRING = 5,                     /* STRING  */
   YYSYMBOL_INICIO = 6,                     /* INICIO  */
   YYSYMBOL_FIM = 7,                        /* FIM  */
-  YYSYMBOL_IF = 8,                         /* IF  */
-  YYSYMBOL_ELSE = 9,                       /* ELSE  */
-  YYSYMBOL_WHILE = 10,                     /* WHILE  */
+  YYSYMBOL_SE = 8,                         /* SE  */
+  YYSYMBOL_SENAO = 9,                      /* SENAO  */
+  YYSYMBOL_ENQUANTO = 10,                  /* ENQUANTO  */
   YYSYMBOL_TEXTO = 11,                     /* TEXTO  */
   YYSYMBOL_INTEIRO = 12,                   /* INTEIRO  */
   YYSYMBOL_REAL = 13,                      /* REAL  */
@@ -623,7 +623,7 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
 static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "NUM", "VARS",
-  "STRING", "INICIO", "FIM", "IF", "ELSE", "WHILE", "TEXTO", "INTEIRO",
+  "STRING", "INICIO", "FIM", "SE", "SENAO", "ENQUANTO", "TEXTO", "INTEIRO",
   "REAL", "ESCREVAR", "ESCREVAT", "ESCREVAI", "LEIAI", "LEIAR", "LEIAT",
   "CMP", "ATRIBUICAO", "'+'", "'-'", "'*'", "'/'", "'%'", "'^'", "SQRT",
   "IFX", "VARPREC", "VARPREC2", "NEG", "VET", "declint", "declfloat",
@@ -1273,21 +1273,21 @@ yyreduce:
 #line 1274 "sena.tab.c"
     break;
 
-  case 5: /* stmt: IF '(' exp ')' '{' list '}'  */
+  case 5: /* stmt: SE '(' exp ')' '{' list '}'  */
 #line 54 "sena.y"
                                               { (yyval.a) = newflow('I', (yyvsp[-4].a), (yyvsp[-1].a), NULL); }
 #line 1280 "sena.tab.c"
     break;
 
-  case 6: /* stmt: IF '(' exp ')' '{' list '}' ELSE '{' list '}'  */
+  case 6: /* stmt: SE '(' exp ')' '{' list '}' SENAO '{' list '}'  */
 #line 55 "sena.y"
-                                                        { (yyval.a) = newflow('I', (yyvsp[-8].a), (yyvsp[-5].a), (yyvsp[-1].a)); }
+                                                         { (yyval.a) = newflow('I', (yyvsp[-8].a), (yyvsp[-5].a), (yyvsp[-1].a)); }
 #line 1286 "sena.tab.c"
     break;
 
-  case 7: /* stmt: WHILE '(' exp ')' '{' list '}'  */
+  case 7: /* stmt: ENQUANTO '(' exp ')' '{' list '}'  */
 #line 56 "sena.y"
-                                         { (yyval.a) = newflow('W', (yyvsp[-4].a), (yyvsp[-1].a), NULL); }
+                                            { (yyval.a) = newflow('W', (yyvsp[-4].a), (yyvsp[-1].a), NULL); }
 #line 1292 "sena.tab.c"
     break;
 

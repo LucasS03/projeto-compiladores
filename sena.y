@@ -24,7 +24,7 @@
 %token <str>VARS
 %token <str>STRING
 %token INICIO FIM 
-%token IF ELSE WHILE
+%token SE SENAO ENQUANTO
 %token TEXTO INTEIRO REAL
 %token ESCREVAR ESCREVAT ESCREVAI
 %token LEIAI LEIAR LEIAT
@@ -51,9 +51,9 @@ prog: stmt { eval($1); }
 	
 	
 stmt: 
-	IF '(' exp ')' '{' list '}' %prec IFX { $$ = newflow('I', $3, $6, NULL); }
-	| IF '(' exp ')' '{' list '}' ELSE '{' list '}' { $$ = newflow('I', $3, $6, $10); }
-	| WHILE '(' exp ')' '{' list '}' { $$ = newflow('W', $3, $6, NULL); }
+	SE '(' exp ')' '{' list '}' %prec IFX { $$ = newflow('I', $3, $6, NULL); }
+	| SE '(' exp ')' '{' list '}' SENAO '{' list '}' { $$ = newflow('I', $3, $6, $10); }
+	| ENQUANTO '(' exp ')' '{' list '}' { $$ = newflow('W', $3, $6, NULL); }
 
 	| VARS ATRIBUICAO exp %prec VARPREC { $$ = newasgn($1,$3); }
 	| VARS ATRIBUICAO STRING %prec VARPREC2 { $$ = newasgnS($1, newast('$', newValorValS($3), NULL)); }

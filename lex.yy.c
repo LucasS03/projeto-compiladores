@@ -749,7 +749,7 @@ YY_DECL
 		}
 
 	{
-#line 31 "sena.l"
+#line 32 "sena.l"
 
 #line 755 "lex.yy.c"
 
@@ -810,92 +810,92 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 32 "sena.l"
+#line 33 "sena.l"
 {return INICIO;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 33 "sena.l"
+#line 34 "sena.l"
 {return FIM;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 35 "sena.l"
+#line 36 "sena.l"
 { /* ignore */ }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 36 "sena.l"
+#line 37 "sena.l"
 {return ATRIBUICAO;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 38 "sena.l"
-{return IF;}
+#line 39 "sena.l"
+{return SE;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 39 "sena.l"
-{return ELSE;}
+#line 40 "sena.l"
+{return SENAO;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 40 "sena.l"
-{return WHILE;}
+#line 41 "sena.l"
+{return ENQUANTO;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 42 "sena.l"
+#line 43 "sena.l"
 { return SQRT; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 44 "sena.l"
+#line 45 "sena.l"
 {return ESCREVAI;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 45 "sena.l"
+#line 46 "sena.l"
 {return ESCREVAR;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 46 "sena.l"
+#line 47 "sena.l"
 {return ESCREVAT;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 47 "sena.l"
+#line 48 "sena.l"
 {return LEIAR;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 48 "sena.l"
+#line 49 "sena.l"
 {return LEIAI;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 49 "sena.l"
+#line 50 "sena.l"
 {return LEIAT;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 51 "sena.l"
+#line 52 "sena.l"
 {return REAL;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 52 "sena.l"
+#line 53 "sena.l"
 {return INTEIRO;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 53 "sena.l"
+#line 54 "sena.l"
 {return TEXTO;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 55 "sena.l"
+#line 56 "sena.l"
 {
 	strcpy(yylval.str,yytext);
 	return VARS;
@@ -904,7 +904,7 @@ YY_RULE_SETUP
 case 19:
 /* rule 19 can match eol */
 YY_RULE_SETUP
-#line 60 "sena.l"
+#line 61 "sena.l"
 {
 	char aux[50];
 	strncpy ( aux, &yytext[1], strlen(yytext)-2);
@@ -916,7 +916,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 69 "sena.l"
+#line 70 "sena.l"
 {
 	yylval.flo = atof(yytext);
 	return NUM;
@@ -924,53 +924,53 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 74 "sena.l"
+#line 75 "sena.l"
 {return *yytext;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 76 "sena.l"
+#line 77 "sena.l"
 {yylval.fn = 1; return CMP; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 77 "sena.l"
+#line 78 "sena.l"
 {yylval.fn = 2; return CMP; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 78 "sena.l"
+#line 79 "sena.l"
 {yylval.fn = 3; return CMP; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 79 "sena.l"
+#line 80 "sena.l"
 {yylval.fn = 4; return CMP; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 80 "sena.l"
+#line 81 "sena.l"
 {yylval.fn = 5; return CMP; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 81 "sena.l"
+#line 82 "sena.l"
 {yylval.fn = 6; return CMP; }
 	YY_BREAK
 case 28:
 /* rule 28 can match eol */
 YY_RULE_SETUP
-#line 83 "sena.l"
+#line 84 "sena.l"
 {;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 84 "sena.l"
+#line 85 "sena.l"
 { /* ignore */}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 85 "sena.l"
+#line 86 "sena.l"
 ECHO;
 	YY_BREAK
 #line 977 "lex.yy.c"
@@ -1978,5 +1978,5 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 85 "sena.l"
+#line 86 "sena.l"
 
