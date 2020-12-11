@@ -3,7 +3,7 @@
 %}
 
 NUM [0-9]+\.?[0-9]*
-VARS[a-z]+[0-9]*
+VARS [a-z]+[0-9]*
 
 INICIO "inicio"
 FIM "fim"
@@ -23,7 +23,8 @@ REAL "real"
 INTEIRO "inteiro"
 TEXTO "texto"
 
-LETRA [a-zA-Z]
+STRING ["][^"]*["]
+SQRT "sqrt"
 
 COMENTARIO "@@".*	
 ATRIBUICAO "<<"
@@ -37,6 +38,8 @@ ATRIBUICAO "<<"
 {IF} {return IF;}
 {ELSE} {return ELSE;}
 {WHILE} {return WHILE;}
+
+{SQRT} { return SQRT; }
 
 {ESCREVAI} {return ESCREVAI;}
 {ESCREVAR} {return ESCREVAR;}
@@ -54,9 +57,13 @@ ATRIBUICAO "<<"
 	return VARS;
 }
 
-{LETRA} {
-	strcpy(yylval.str,yytext);
-	return LETRA;
+{STRING} {
+	char aux[50];
+	strncpy ( aux, &yytext[1], strlen(yytext)-2);
+	aux[strlen(yytext)-2]='\0';
+	strcpy (yylval.str, aux);
+
+	return STRING;  
 }
 
 {NUM} {
@@ -68,11 +75,11 @@ ATRIBUICAO "<<"
 
 ">" {yylval.fn = 1; return CMP; }
 "<" {yylval.fn = 2; return CMP; }
-"<>" {yylval.fn = 3; return CMP; }
+"!=" {yylval.fn = 3; return CMP; }
 "==" {yylval.fn = 4; return CMP; }
 ">=" {yylval.fn = 5; return CMP; }
 "<=" {yylval.fn = 6; return CMP; }
 
 [\ \n\t]*	{;}
-. {printf("(%s) Ingonrado\n",yytext);}
+. { /* ignore */}
 %%
