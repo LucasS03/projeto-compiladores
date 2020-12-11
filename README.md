@@ -86,9 +86,6 @@ escrevar(5.0 / 10)
 
 escrevat("Exponenciação: ")
 escrevar(5.0 ^ 10)
-
-escrevat("Radiciação: ")
-escrevar(raiz(4))
 ```
 
 #### Expressões matemáticas
