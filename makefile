@@ -1,7 +1,7 @@
-all : aulaAST.l aulaAST.y
+all : sena.l sena.y
 	clear
-	flex -i aulaAST.l
-	bison aulaAST.y
-	gcc aulaAST.tab.c -o analisador -lfl -lm
+	flex -i sena.l
+	bison sena.y
+	gcc sena.tab.c -o sena-analisador -lfl -lm
 	clear
-	./analisador
+	./sena-analisador

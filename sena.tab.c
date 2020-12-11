@@ -67,7 +67,7 @@
 
 
 /* First part of user prologue.  */
-#line 1 "aulaAST.y"
+#line 1 "sena.y"
 
 
 	#include <stdio.h>
@@ -82,7 +82,7 @@
 	}
 
 
-#line 86 "aulaAST.tab.c"
+#line 86 "sena.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -159,14 +159,14 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 16 "aulaAST.y"
+#line 16 "sena.y"
 
 	float flo;
 	int fn;
 	char str[50];
 	Ast *a;
 
-#line 170 "aulaAST.tab.c"
+#line 170 "sena.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -1262,217 +1262,217 @@ yyreduce:
   switch (yyn)
     {
   case 3: /* prog: stmt  */
-#line 48 "aulaAST.y"
+#line 48 "sena.y"
            { eval((yyvsp[0].a)); }
-#line 1268 "aulaAST.tab.c"
+#line 1268 "sena.tab.c"
     break;
 
   case 4: /* prog: prog stmt  */
-#line 49 "aulaAST.y"
+#line 49 "sena.y"
                     { eval((yyvsp[0].a)); }
-#line 1274 "aulaAST.tab.c"
+#line 1274 "sena.tab.c"
     break;
 
   case 5: /* stmt: IF '(' exp ')' '{' list '}'  */
-#line 54 "aulaAST.y"
+#line 54 "sena.y"
                                               { (yyval.a) = newflow('I', (yyvsp[-4].a), (yyvsp[-1].a), NULL); }
-#line 1280 "aulaAST.tab.c"
+#line 1280 "sena.tab.c"
     break;
 
   case 6: /* stmt: IF '(' exp ')' '{' list '}' ELSE '{' list '}'  */
-#line 55 "aulaAST.y"
+#line 55 "sena.y"
                                                         { (yyval.a) = newflow('I', (yyvsp[-8].a), (yyvsp[-5].a), (yyvsp[-1].a)); }
-#line 1286 "aulaAST.tab.c"
+#line 1286 "sena.tab.c"
     break;
 
   case 7: /* stmt: WHILE '(' exp ')' '{' list '}'  */
-#line 56 "aulaAST.y"
+#line 56 "sena.y"
                                          { (yyval.a) = newflow('W', (yyvsp[-4].a), (yyvsp[-1].a), NULL); }
-#line 1292 "aulaAST.tab.c"
+#line 1292 "sena.tab.c"
     break;
 
   case 8: /* stmt: VARS ATRIBUICAO exp  */
-#line 58 "aulaAST.y"
+#line 58 "sena.y"
                                             { (yyval.a) = newasgn((yyvsp[-2].str),(yyvsp[0].a)); }
-#line 1298 "aulaAST.tab.c"
+#line 1298 "sena.tab.c"
     break;
 
   case 9: /* stmt: VARS ATRIBUICAO STRING  */
-#line 59 "aulaAST.y"
+#line 59 "sena.y"
                                                 { (yyval.a) = newasgnS((yyvsp[-2].str), newast('$', newValorValS((yyvsp[0].str)), NULL)); }
-#line 1304 "aulaAST.tab.c"
+#line 1304 "sena.tab.c"
     break;
 
   case 10: /* stmt: INTEIRO VARS  */
-#line 61 "aulaAST.y"
+#line 61 "sena.y"
                                      { (yyval.a) = newvari('U',(yyvsp[0].str)); }
-#line 1310 "aulaAST.tab.c"
+#line 1310 "sena.tab.c"
     break;
 
   case 11: /* stmt: REAL VARS  */
-#line 62 "aulaAST.y"
+#line 62 "sena.y"
                                     { (yyval.a) = newvari('V',(yyvsp[0].str)); }
-#line 1316 "aulaAST.tab.c"
+#line 1316 "sena.tab.c"
     break;
 
   case 12: /* stmt: TEXTO VARS  */
-#line 63 "aulaAST.y"
+#line 63 "sena.y"
                                       { (yyval.a) = newvari('X',(yyvsp[0].str)); }
-#line 1322 "aulaAST.tab.c"
+#line 1322 "sena.tab.c"
     break;
 
   case 13: /* stmt: INTEIRO VARS ATRIBUICAO exp  */
-#line 65 "aulaAST.y"
+#line 65 "sena.y"
                                       { (yyval.a) = newast('G', newvari('U',(yyvsp[-2].str)) , (yyvsp[0].a)); }
-#line 1328 "aulaAST.tab.c"
+#line 1328 "sena.tab.c"
     break;
 
   case 14: /* stmt: REAL VARS ATRIBUICAO exp  */
-#line 66 "aulaAST.y"
+#line 66 "sena.y"
                                    { (yyval.a) = newast('D', newvari('V',(yyvsp[-2].str)) , (yyvsp[0].a)); }
-#line 1334 "aulaAST.tab.c"
+#line 1334 "sena.tab.c"
     break;
 
   case 15: /* stmt: TEXTO VARS ATRIBUICAO STRING  */
-#line 67 "aulaAST.y"
+#line 67 "sena.y"
                                        { (yyval.a) = newast('H', newvari('X',(yyvsp[-2].str)) , newValorValS((yyvsp[0].str))); }
-#line 1340 "aulaAST.tab.c"
+#line 1340 "sena.tab.c"
     break;
 
   case 16: /* stmt: LEIAR '(' VARS ')'  */
-#line 69 "aulaAST.y"
+#line 69 "sena.y"
                              {  (yyval.a) = newvari('S', (yyvsp[-1].str)); }
-#line 1346 "aulaAST.tab.c"
+#line 1346 "sena.tab.c"
     break;
 
   case 17: /* stmt: LEIAI '(' VARS ')'  */
-#line 70 "aulaAST.y"
+#line 70 "sena.y"
                              {  (yyval.a) = newvari('S', (yyvsp[-1].str)); }
-#line 1352 "aulaAST.tab.c"
+#line 1352 "sena.tab.c"
     break;
 
   case 18: /* stmt: LEIAT '(' VARS ')'  */
-#line 71 "aulaAST.y"
+#line 71 "sena.y"
                              {  (yyval.a) = newvari('T', (yyvsp[-1].str)); }
-#line 1358 "aulaAST.tab.c"
+#line 1358 "sena.tab.c"
     break;
 
   case 19: /* stmt: ESCREVAR '(' exp ')'  */
-#line 73 "aulaAST.y"
+#line 73 "sena.y"
                               { (yyval.a) = newast('p', (yyvsp[-1].a), NULL); }
-#line 1364 "aulaAST.tab.c"
+#line 1364 "sena.tab.c"
     break;
 
   case 20: /* stmt: ESCREVAI '(' exp ')'  */
-#line 74 "aulaAST.y"
+#line 74 "sena.y"
                               { (yyval.a) = newast('u', (yyvsp[-1].a), NULL); }
-#line 1370 "aulaAST.tab.c"
+#line 1370 "sena.tab.c"
     break;
 
   case 21: /* stmt: ESCREVAT '(' aString ')'  */
-#line 75 "aulaAST.y"
+#line 75 "sena.y"
                                    { (yyval.a) = (yyvsp[-1].a); }
-#line 1376 "aulaAST.tab.c"
+#line 1376 "sena.tab.c"
     break;
 
   case 22: /* aString: VARS  */
-#line 78 "aulaAST.y"
+#line 78 "sena.y"
               { (yyval.a) = searchVar('z', (yyvsp[0].str)); }
-#line 1382 "aulaAST.tab.c"
+#line 1382 "sena.tab.c"
     break;
 
   case 23: /* aString: STRING  */
-#line 79 "aulaAST.y"
+#line 79 "sena.y"
                  { (yyval.a) = newast('Z', newValorValS((yyvsp[0].str)), NULL); }
-#line 1388 "aulaAST.tab.c"
+#line 1388 "sena.tab.c"
     break;
 
   case 24: /* list: stmt  */
-#line 82 "aulaAST.y"
+#line 82 "sena.y"
            { (yyval.a) = (yyvsp[0].a); }
-#line 1394 "aulaAST.tab.c"
+#line 1394 "sena.tab.c"
     break;
 
   case 25: /* list: list stmt  */
-#line 83 "aulaAST.y"
+#line 83 "sena.y"
                             { (yyval.a) = newast('L', (yyvsp[-1].a), (yyvsp[0].a));	}
-#line 1400 "aulaAST.tab.c"
+#line 1400 "sena.tab.c"
     break;
 
   case 26: /* exp: exp '+' exp  */
-#line 87 "aulaAST.y"
+#line 87 "sena.y"
                     { (yyval.a) = newast('+', (yyvsp[-2].a), (yyvsp[0].a)); }
-#line 1406 "aulaAST.tab.c"
+#line 1406 "sena.tab.c"
     break;
 
   case 27: /* exp: exp '-' exp  */
-#line 88 "aulaAST.y"
+#line 88 "sena.y"
                       { (yyval.a) = newast('-', (yyvsp[-2].a), (yyvsp[0].a)); }
-#line 1412 "aulaAST.tab.c"
+#line 1412 "sena.tab.c"
     break;
 
   case 28: /* exp: exp '*' exp  */
-#line 89 "aulaAST.y"
+#line 89 "sena.y"
                       { (yyval.a) = newast('*', (yyvsp[-2].a), (yyvsp[0].a)); }
-#line 1418 "aulaAST.tab.c"
+#line 1418 "sena.tab.c"
     break;
 
   case 29: /* exp: exp '/' exp  */
-#line 90 "aulaAST.y"
+#line 90 "sena.y"
                       { (yyval.a) = newast('/', (yyvsp[-2].a), (yyvsp[0].a)); }
-#line 1424 "aulaAST.tab.c"
+#line 1424 "sena.tab.c"
     break;
 
   case 30: /* exp: exp '%' exp  */
-#line 91 "aulaAST.y"
+#line 91 "sena.y"
                       { (yyval.a) = newast('%', (yyvsp[-2].a), (yyvsp[0].a)); }
-#line 1430 "aulaAST.tab.c"
+#line 1430 "sena.tab.c"
     break;
 
   case 31: /* exp: '(' exp ')'  */
-#line 92 "aulaAST.y"
+#line 92 "sena.y"
                       { (yyval.a) = (yyvsp[-1].a); }
-#line 1436 "aulaAST.tab.c"
+#line 1436 "sena.tab.c"
     break;
 
   case 32: /* exp: exp '^' exp  */
-#line 93 "aulaAST.y"
+#line 93 "sena.y"
                       { (yyval.a) = newast('^', (yyvsp[-2].a), (yyvsp[0].a));  }
-#line 1442 "aulaAST.tab.c"
+#line 1442 "sena.tab.c"
     break;
 
   case 33: /* exp: SQRT '(' exp ',' exp ')'  */
-#line 94 "aulaAST.y"
+#line 94 "sena.y"
                                    { (yyval.a) = newast('~', (yyvsp[-3].a), (yyvsp[-1].a)); }
-#line 1448 "aulaAST.tab.c"
+#line 1448 "sena.tab.c"
     break;
 
   case 34: /* exp: exp CMP exp  */
-#line 96 "aulaAST.y"
+#line 96 "sena.y"
                       { (yyval.a) = newcmp((yyvsp[-1].fn), (yyvsp[-2].a), (yyvsp[0].a)); }
-#line 1454 "aulaAST.tab.c"
+#line 1454 "sena.tab.c"
     break;
 
   case 35: /* exp: '-' exp  */
-#line 97 "aulaAST.y"
+#line 97 "sena.y"
                             { (yyval.a) = newast('M',(yyvsp[0].a),NULL); }
-#line 1460 "aulaAST.tab.c"
+#line 1460 "sena.tab.c"
     break;
 
   case 36: /* exp: NUM  */
-#line 98 "aulaAST.y"
+#line 98 "sena.y"
               { (yyval.a) = newnum((yyvsp[0].flo)); }
-#line 1466 "aulaAST.tab.c"
+#line 1466 "sena.tab.c"
     break;
 
   case 37: /* exp: VARS  */
-#line 99 "aulaAST.y"
+#line 99 "sena.y"
                           { (yyval.a) = newValorVal((yyvsp[0].str)); }
-#line 1472 "aulaAST.tab.c"
+#line 1472 "sena.tab.c"
     break;
 
 
-#line 1476 "aulaAST.tab.c"
+#line 1476 "sena.tab.c"
 
       default: break;
     }
@@ -1666,7 +1666,7 @@ yyreturn:
   return yyresult;
 }
 
-#line 104 "aulaAST.y"
+#line 104 "sena.y"
 
 
 #include "lex.yy.c"
