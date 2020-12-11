@@ -1,6 +1,13 @@
 inicio
 
+  @@ codigo em sena de fibonacci
+
+  escrevat("Fibonnaci")
+  escrevat("") @@ pular linha
+
   inteiro x
+
+  escrevat("Digite o número")
 	leiai(x)
 	
   inteiro i << 0
@@ -14,7 +21,7 @@ inicio
 		aux << a
 		a << b
 		b << b + aux
-    
+
     i << i + 1
 	}
 
