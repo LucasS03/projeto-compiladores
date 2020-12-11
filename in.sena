@@ -1,34 +1,21 @@
 inicio
-	
-	@@ real
-	real num1
-	leiar(num1)
-	escrevar(num1)
-	
-	@@ real
-	real num2
-	leiar(num2)
-	escrevar(num2)
 
-	@@ inteiro
-	inteiro num3
-	leiai(num3)
-	escrevai(num3)
+  real b
+  real h
+  real area
 
-	@@ texto
-	texto nome
-	leiat(nome)
-	escrevat(nome)
+  escrevat("Cálculo da área do retângulo")
+  escrevat("") @@ pular linha
 
-	num1 << 10 + 5 * 2
-	
-	num3 << 30+10
-	nome << "teste"
-	
-	escrevar(num1)
-	escrevai(num3)
-	escrevat(nome)
-	escrevat("lucasss")
+  escrevat("Digite a base: ")
+  leiar(b)
+
+  escrevat("Digite a altura: ")
+  leiar(h)
+
+  escrevat("")
+  escrevat("A área do retângulo é: ")
+  area << h * b
+  escrevar(area)
 
 fim
-

@@ -16,80 +16,85 @@ fim
 ```
 
 #### Tipos
-- real: aceita um número inteiro `a << 10` ou real `a << 10.0`
+- real: aceita um número inteiro `a << 10` (que vai ser convertido em real) ou real `a << 10.0`
+- inteiro: aceita um número inteiro `a << 10` (um número real atribuído, será convertido `a << 10.5`, logo, `a` é igual a `10`)
+- texto: aceita uma palavra `nome << "Lucas"`
 
 #### Declaração de variáveis
-- com um caractere
 ```
-real a
-```
-- mais de um caractere
-```
-real soma 
-```
-- misturando letras e números
-```
-real soma1
-```
-- mais de uma variável
-```
-real x, y, area
+real x
+real y
+real area
+inteiro idade
+texto nome
 ```
 
 #### Atribuição de valores
 ```
-real a << 5
-real b, soma
+inteiro a << 5
+inteiro b
+inteiro soma
 
-b << 10.0
+b << 10
 soma << a * b
 ```
 
 #### Operação de escrita
 ```
-escreva("Hello Word!")
-escreva(a)
-escreva(5.0)
-escreva(a + b)
+@@ para textos
+escrevat("Hello Word!")
+escrevat(variavel)
+
+@@ para inteiro
+escrevai(variavel)
+escrevai(5)
+
+@@ para real
+escreva(variavel)
+escrevar(5.5 * 14.3)
 ```
 
 #### Operação de leitura
 ```
 real idade
-escreva("Digite sua idade: ")
-leia(idade)
+escrevat("Digite sua idade: ")
+leiar(idade)
+
+@@ para real
+leiar(variavel)
+
+@@ para inteiro
+leiai(variavel)
+
+@@ para texto
+leiat(variavel)
 ```
 
 #### Operações matemáticas
 ```
-escreva("Soma: ")
-escreva(5.0 + 10)
+escrevat("Soma: ")
+escrevar(5.0 + 10)
 
-escreva("Subtração: ")
-escreva(5.0 - 10)
+escrevat("Subtração: ")
+escrevar(5.0 - 10)
 
-escreva("Multiplicação: ")
-escreva(5.0 * 10)
+escrevat("Multiplicação: ")
+escrevar(5.0 * 10)
 
-escreva("Divisão: ")
-escreva(5.0 / 10)
+escrevat("Divisão: ")
+escrevar(5.0 / 10)
 
-escreva("Exponenciação: ")
-escreva(5.0 ^ 10)
+escrevat("Exponenciação: ")
+escrevar(5.0 ^ 10)
 
-escreva("Radiciação: ")
-escreva(raiz(4))
+escrevat("Radiciação: ")
+escrevar(raiz(4))
 ```
 
-#### Expressões matemáticas e precedência
-##### Ordem de precedência
-- 1°: Parênteses 
-- 2°: Exponenciação
-- 3°: Multiplicação e divisão tem mesmo grau de precedência
-- 4°: Soma e subtração tem mesmo grau de precedência
+#### Expressões matemáticas
 
 ```
-escreva(((a / b) + (a * b) - 1))
+escrevar(((a / b) + (a * b) - 1))
 ```
 
 #### Exemplo 
@@ -100,19 +105,19 @@ inicio
   real h
   real area
 
-  escreva("Cálculo da área do retângulo")
-  escreva("") @@ pular linha
+  escrevat("Cálculo da área do retângulo")
+  escrevat("") @@ pular linha
 
-  escreva("Digite a base: ")
-  leia(b)
+  escrevat("Digite a base: ")
+  leiar(b)
 
-  escreva("Digite a altura: ")
-  leia(h)
+  escrevat("Digite a altura: ")
+  leiar(h)
 
-  escreva("")
-  escreva("A área do retângulo é: ")
+  escrevat("")
+  escrevat("A área do retângulo é: ")
   area << h * b
-  escreva(area)
+  escrevar(area)
 
 fim
 ```
